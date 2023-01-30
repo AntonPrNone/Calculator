@@ -24,5 +24,19 @@ namespace Calculator
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var btn = e.Source as Button;
+            var text = btn.Content;
+            Expression_TextBox.Text = (string)text;
+        }
+
+        private void Window_KeyDown(object sender, KeyEventArgs e)
+        {
+            var key = e.Key;
+            if (key is Key.D0)
+            Expression_TextBox.Text = key.ToString();
+        }
     }
 }

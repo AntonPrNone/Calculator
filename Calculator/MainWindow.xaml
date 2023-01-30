@@ -149,12 +149,12 @@
                     <RadioButton Content="Grads" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" GroupName="Сorner" Padding="0,0,0,0"/>
                 </Grid>
             </Border>
-            <Button Grid.Row="1" Grid.Column="5">MC</Button>
-            <Button Grid.Row="1" Grid.Column="6">MR</Button>
-            <Button Grid.Row="1" Grid.Column="7">MS</Button>
-            <Button Grid.Row="1" Grid.Column="8">M+</Button>
-            <Button Grid.Row="1" Grid.Column="9">M-</Button>
-            <Button Grid.Row="2" Grid.Column="0" IsEnabled="False">
+            <Button Grid.Row="1" Grid.Column="5" Click="Button_Click">MC</Button>
+            <Button Grid.Row="1" Grid.Column="6" Click="Button_Click">MR</Button>
+            <Button Grid.Row="1" Grid.Column="7" Click="Button_Click">MS</Button>
+            <Button Grid.Row="1" Grid.Column="8" Click="Button_Click">M+</Button>
+            <Button Grid.Row="1" Grid.Column="9" Click="Button_Click">M-</Button>
+            <Button Grid.Row="2" Grid.Column="0" Click="Button_Click" IsEnabled="False">
                 <Button.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="Gainsboro"/>
@@ -162,57 +162,57 @@
                     </LinearGradientBrush>
                 </Button.Background>
             </Button>
-            <Button Grid.Row="2" Grid.Column="1">Inv</Button>
-            <Button Grid.Row="2" Grid.Column="2">In</Button>
-            <Button Grid.Row="2" Grid.Column="3">(</Button>
-            <Button Grid.Row="2" Grid.Column="4">)</Button>
-            <Button Grid.Row="2" Grid.Column="5">⟵</Button>
-            <Button Grid.Row="2" Grid.Column="6">CE</Button>
-            <Button Grid.Row="2" Grid.Column="7">C</Button>
-            <Button Grid.Row="2" Grid.Column="8">±</Button>
-            <Button Grid.Row="2" Grid.Column="9">√</Button>
+            <Button Grid.Row="2" Grid.Column="1" Click="Button_Click">Inv</Button>
+            <Button Grid.Row="2" Grid.Column="2" Click="Button_Click">In</Button>
+            <Button Grid.Row="2" Grid.Column="3" Click="Button_Click">(</Button>
+            <Button Grid.Row="2" Grid.Column="4" Click="Button_Click">)</Button>
+            <Button Grid.Row="2" Grid.Column="5" Click="Button_Click">⟵</Button>
+            <Button Grid.Row="2" Grid.Column="6" Click="Button_Click">CE</Button>
+            <Button Grid.Row="2" Grid.Column="7" Click="Button_Click">C</Button>
+            <Button Grid.Row="2" Grid.Column="8" Click="Button_Click">±</Button>
+            <Button Grid.Row="2" Grid.Column="9" Click="Button_Click">√</Button>
 
-            <Button Grid.Row="3" Grid.Column="0">Int</Button>
-            <Button Grid.Row="3" Grid.Column="1">sinh</Button>
-            <Button Grid.Row="3" Grid.Column="2">sin</Button>
-            <Button Grid.Row="3" Grid.Column="3">x^2</Button>
-            <Button Grid.Row="3" Grid.Column="4">n!</Button>
-            <Button Grid.Row="3" Grid.Column="5" Background="{DynamicResource ColorNUMBERS}" FontSize="16">7</Button>
-            <Button Grid.Row="3" Grid.Column="6" Background="{DynamicResource ColorNUMBERS}" FontSize="16">8</Button>
-            <Button Grid.Row="3" Grid.Column="7" Background="{DynamicResource ColorNUMBERS}" FontSize="16">9</Button>
-            <Button Grid.Row="3" Grid.Column="8">/</Button>
-            <Button Grid.Row="3" Grid.Column="9">%</Button>
+            <Button Grid.Row="3" Grid.Column="0" Click="Button_Click">Int</Button>
+            <Button Grid.Row="3" Grid.Column="1" Click="Button_Click">sinh</Button>
+            <Button Grid.Row="3" Grid.Column="2" Click="Button_Click">sin</Button>
+            <Button Grid.Row="3" Grid.Column="3" Click="Button_Click">x^2</Button>
+            <Button Grid.Row="3" Grid.Column="4" Click="Button_Click">n!</Button>
+            <Button Grid.Row="3" Grid.Column="5" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">7</Button>
+            <Button Grid.Row="3" Grid.Column="6" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">8</Button>
+            <Button Grid.Row="3" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">9</Button>
+            <Button Grid.Row="3" Grid.Column="8" Click="Button_Click">/</Button>
+            <Button Grid.Row="3" Grid.Column="9" Click="Button_Click">%</Button>
 
-            <Button Grid.Row="4" Grid.Column="0">dms</Button>
-            <Button Grid.Row="4" Grid.Column="1">cosh</Button>
-            <Button Grid.Row="4" Grid.Column="2">cos</Button>
-            <Button Grid.Row="4" Grid.Column="3">x^y</Button>
-            <Button Grid.Row="4" Grid.Column="4">x√y</Button>
-            <Button Grid.Row="4" Grid.Column="5" Background="{DynamicResource ColorNUMBERS}" FontSize="16">4</Button>
-            <Button Grid.Row="4" Grid.Column="6" Background="{DynamicResource ColorNUMBERS}" FontSize="16">5</Button>
-            <Button Grid.Row="4" Grid.Column="7" Background="{DynamicResource ColorNUMBERS}" FontSize="16">6</Button>
-            <Button Grid.Row="4" Grid.Column="8" FontSize="16">*</Button>
-            <Button Grid.Row="4" Grid.Column="9">1/x</Button>
+            <Button Grid.Row="4" Grid.Column="0" Click="Button_Click">dms</Button>
+            <Button Grid.Row="4" Grid.Column="1" Click="Button_Click">cosh</Button>
+            <Button Grid.Row="4" Grid.Column="2" Click="Button_Click">cos</Button>
+            <Button Grid.Row="4" Grid.Column="3" Click="Button_Click">x^y</Button>
+            <Button Grid.Row="4" Grid.Column="4" Click="Button_Click">x√y</Button>
+            <Button Grid.Row="4" Grid.Column="5" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">4</Button>
+            <Button Grid.Row="4" Grid.Column="6" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">5</Button>
+            <Button Grid.Row="4" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">6</Button>
+            <Button Grid.Row="4" Grid.Column="8" Click="Button_Click" FontSize="16">*</Button>
+            <Button Grid.Row="4" Grid.Column="9" Click="Button_Click">1/x</Button>
 
-            <Button Grid.Row="5" Grid.Column="0">π</Button>
-            <Button Grid.Row="5" Grid.Column="1">tanh</Button>
-            <Button Grid.Row="5" Grid.Column="2">tan</Button>
-            <Button Grid.Row="5" Grid.Column="3">x^3</Button>
-            <Button Grid.Row="5" Grid.Column="4">3√x</Button>
-            <Button Grid.Row="5" Grid.Column="5" Background="{DynamicResource ColorNUMBERS}" FontSize="16">1</Button>
-            <Button Grid.Row="5" Grid.Column="6" Background="{DynamicResource ColorNUMBERS}" FontSize="16">2</Button>
-            <Button Grid.Row="5" Grid.Column="7" Background="{DynamicResource ColorNUMBERS}" FontSize="16">3</Button>
-            <Button Grid.Row="5" Grid.Column="8" FontSize="16">-</Button>
-            <Button Grid.Row="5" Grid.Column="9" Grid.RowSpan="2" FontSize="22" FontWeight="Bold">=</Button>
+            <Button Grid.Row="5" Grid.Column="0" Click="Button_Click">π</Button>
+            <Button Grid.Row="5" Grid.Column="1" Click="Button_Click">tanh</Button>
+            <Button Grid.Row="5" Grid.Column="2" Click="Button_Click">tan</Button>
+            <Button Grid.Row="5" Grid.Column="3" Click="Button_Click">x^3</Button>
+            <Button Grid.Row="5" Grid.Column="4" Click="Button_Click">3√x</Button>
+            <Button Grid.Row="5" Grid.Column="5" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">1</Button>
+            <Button Grid.Row="5" Grid.Column="6" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">2</Button>
+            <Button Grid.Row="5" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">3</Button>
+            <Button Grid.Row="5" Grid.Column="8" Click="Button_Click" FontSize="16">-</Button>
+            <Button Grid.Row="5" Grid.Column="9" Click="Button_Click" Grid.RowSpan="2" FontSize="22" FontWeight="Bold" Cursor="Hand">=</Button>
 
-            <Button Grid.Row="6" Grid.Column="0">F-E</Button>
-            <Button Grid.Row="6" Grid.Column="1">Exp</Button>
-            <Button Grid.Row="6" Grid.Column="2">Mod</Button>
-            <Button Grid.Row="6" Grid.Column="3">log</Button>
-            <Button Grid.Row="6" Grid.Column="4">10^x</Button>
-            <Button Grid.Row="6" Grid.Column="5" Grid.ColumnSpan="2" Background="{StaticResource ColorNUMBERS}" FontSize="16">0</Button>
-            <Button Grid.Row="6" Grid.Column="7" Background="{DynamicResource ColorNUMBERS}" FontSize="16">,</Button>
-            <Button Grid.Row="6" Grid.Column="8" FontSize="16">+</Button>
+            <Button Grid.Row="6" Grid.Column="0" Click="Button_Click">F-E</Button>
+            <Button Grid.Row="6" Grid.Column="1" Click="Button_Click">Exp</Button>
+            <Button Grid.Row="6" Grid.Column="2" Click="Button_Click">Mod</Button>
+            <Button Grid.Row="6" Grid.Column="3" Click="Button_Click">log</Button>
+            <Button Grid.Row="6" Grid.Column="4" Click="Button_Click">10^x</Button>
+            <Button Grid.Row="6" Grid.Column="5" Click="Button_Click" Grid.ColumnSpan="2" Background="{StaticResource ColorNUMBERS}" FontSize="16">0</Button>
+            <Button Grid.Row="6" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">,</Button>
+            <Button Grid.Row="6" Grid.Column="8" Click="Button_Click" FontSize="16">+</Button>
         </Grid>
         <Grid Height="20" VerticalAlignment="Top" Background="White">
             <Grid.ColumnDefinitions>
