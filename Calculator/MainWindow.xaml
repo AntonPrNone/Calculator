@@ -129,7 +129,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Expression_TextBox" Style="{DynamicResource TextBoxStyle}" TextWrapping="Wrap" Text="012345" TextAlignment="Right" Grid.ColumnSpan="10" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="25" FontFamily="Consolas" Margin="2,2,2,2" Padding="1,1,5,1" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow" BorderThickness="1,1,1,1" ClipToBounds="True" AllowDrop="True" Focusable="False">
+            <TextBox x:Name="Expression_TextBox" Style="{DynamicResource TextBoxStyle}" TextWrapping="Wrap" Text="10" TextAlignment="Right" Grid.ColumnSpan="10" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="25" FontFamily="Consolas" Margin="2,2,2,2" Padding="1,1,5,1" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow" BorderThickness="1,1,1,1" ClipToBounds="True" AllowDrop="True" Focusable="False">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="1"/>
@@ -138,15 +138,15 @@
                 </TextBox.Background>
             </TextBox>
             <Border Grid.Row="1" Grid.ColumnSpan="5" CornerRadius="2,2,2,2" BorderThickness="1,1,1,1" BorderBrush="#FFABADB3" Margin="2,2,2,2">
-                <Grid VerticalAlignment="Center" Margin="2,0,2,0">
+                <Grid x:Name="GridGroupRadioButton" VerticalAlignment="Center" Margin="2,0,2,0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <RadioButton Content="Degrees" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" GroupName="Сorner" Padding="0,0,0,0"/>
-                    <RadioButton Content="Radians" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" GroupName="Сorner" Padding="0,0,0,0"/>
-                    <RadioButton Content="Grads" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" GroupName="Сorner" Padding="0,0,0,0"/>
+                    <RadioButton Content="Degrees" HorizontalAlignment="Center" VerticalAlignment="Center" IsChecked="True" GroupName="Сorner" Padding="0,0,0,0" Checked="RadioButton_Checked"/>
+                    <RadioButton Content="Radians" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" GroupName="Сorner" Padding="0,0,0,0" Checked="RadioButton_Checked"/>
+                    <RadioButton Content="Grads" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="2" GroupName="Сorner" Padding="0,0,0,0" Checked="RadioButton_Checked"/>
                 </Grid>
             </Border>
             <Button Grid.Row="1" Grid.Column="5" Click="Button_Click">MC</Button>
@@ -213,6 +213,7 @@
             <Button Grid.Row="6" Grid.Column="5" Click="Button_Click" Grid.ColumnSpan="2" Background="{StaticResource ColorNUMBERS}" FontSize="16">0</Button>
             <Button Grid.Row="6" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">,</Button>
             <Button Grid.Row="6" Grid.Column="8" Click="Button_Click" FontSize="16">+</Button>
+            <Label x:Name="Expression_Label" Content="5 + 5 * (0 + 2) * 10" Grid.ColumnSpan="10" Width="400" Height="33" Padding="5,5,10,5" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontFamily="Consolas"/>
         </Grid>
         <Grid Height="20" VerticalAlignment="Top" Background="White">
             <Grid.ColumnDefinitions>
