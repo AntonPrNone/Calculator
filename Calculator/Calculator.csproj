@@ -97,5 +97,11 @@
   <ItemGroup>
     <Resource Include="icon.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logic_Calc\Logic_Calc.csproj">
+      <Project>{87154A88-14D8-4878-BEE2-4420DAA7FF7F}</Project>
+      <Name>Logic_Calc</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

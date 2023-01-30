@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Calculator"
         mc:Ignorable="d"
-        Title="Calculator" Height="324" Width="424" ResizeMode="CanMinimize" Topmost="True" WindowStartupLocation="CenterScreen" Icon="/Icon.png">
+        Title="Calculator" Height="324" Width="424" ResizeMode="CanMinimize" Topmost="True" WindowStartupLocation="CenterScreen" Icon="/Icon.png" KeyDown="Window_KeyDown">
     <Window.Resources>
         <Style x:Key="FocusVisual">
             <Setter Property="Control.Template">

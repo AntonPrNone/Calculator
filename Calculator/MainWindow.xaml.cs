@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Logic_Calc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,8 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
+        Key keyOld;
+        Key keyNew;
         public MainWindow()
         {
             InitializeComponent();
@@ -34,9 +37,12 @@ namespace Calculator
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            var key = e.Key;
-            if (key is Key.D0)
-            Expression_TextBox.Text = key.ToString();
+            keyOld = keyNew;
+            keyNew = e.Key;
+            if (keyOld == Key.LeftShift && keyNew == Key.OemPlus)
+            Expression_TextBox.Text = e.Key.ToString();
+
+            Logic.ProcessingKey(e.Key, false);
         }
     }
 }
