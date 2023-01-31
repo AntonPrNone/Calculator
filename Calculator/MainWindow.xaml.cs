@@ -21,8 +21,6 @@ namespace Calculator
     /// </summary>
     public partial class MainWindow : Window
     {
-        Key keyOld;
-        Key keyNew;
         Logic logic = new Logic();
         public MainWindow()
         {
@@ -39,40 +37,87 @@ namespace Calculator
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
             Expression_TextBox.Text = e.Key.ToString();
-            if ((e.Key == Key.OemPlus) && 
-                (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "ru")
             {
-                Expression_TextBox.Text = "+";
+                if (e.Key == Key.OemQuestion)
+                {
+                    Expression_TextBox.Text = ",";
+                }
+
+                if ((e.Key == Key.Oem5) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+                {
+                    Expression_TextBox.Text = "/";
+                }
+
+                if ((e.Key == Key.D6) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+                {
+                    Expression_TextBox.Text = "^";
+                }
             }
 
-            if ((e.Key == Key.OemMinus) &&
-                (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+            else if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "en")
             {
-                Expression_TextBox.Text = "-";
+                if (e.Key == Key.OemComma)
+                {
+                    Expression_TextBox.Text = ",";
+                }
+
+                if (e.Key == Key.OemPeriod)
+                {
+                    Expression_TextBox.Text = ",";
+                }
+
+                if (e.Key == Key.OemQuestion)
+                    Expression_TextBox.Text = "/";
+            }
+            
+            if ((e.Key == Key.D1) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+            {
+                Expression_TextBox.Text = "!";
             }
 
             if ((e.Key == Key.D8) &&
-                (e.KeyboardDevice.Modifiers & ModifierKeys.Control) == ModifierKeys.Control)
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
             {
                 Expression_TextBox.Text = "*";
             }
 
-            
-            //keyOld = keyNew;
-            //keyNew = e.Key;
-            //if (keyOld == Key.LeftShift && keyNew == Key.OemPlus)
-            //    Expression_TextBox.Text = e.Key.ToString();
+            if ((e.Key == Key.D9) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+            {
+                Expression_TextBox.Text = "(";
+            }
 
-            //Logic.ProcessingKey(e.Key, false);
+            if ((e.Key == Key.D0) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+            {
+                Expression_TextBox.Text = ")";
+            }
 
-            //if ((Keyboard.Modifiers & ModifierKeys.Control) > 0)
-            //{
-            //    Zero_Btn.Background = Brushes.Red;
-            //}
-            //else
-            //{
-            //    Zero_Btn.Background = Brushes.Blue;
-            //}
+            if ((e.Key == Key.OemMinus) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+            {
+                Expression_TextBox.Text = "-";
+            }
+
+            if ((e.Key == Key.OemPlus) && 
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+            {
+                Expression_TextBox.Text = "+";
+            }
+
+            if (e.Key == Key.Enter)
+            {
+                Expression_TextBox.Text = "=";
+            }
+
+            if (e.Key == Key.Back)
+            {
+                Expression_TextBox.Text = "Backspace";
+            }
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

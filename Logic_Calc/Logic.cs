@@ -15,7 +15,7 @@ namespace Logic_Calc
         public static Key[] KeysNumbers = { Key.D0, Key.D1, Key.D2, Key.D3, Key.D4, Key.D5, Key.D6, Key.D7, Key.D8, Key.D9 };
         public static Key[] KeysSigns = { Key.Enter, Key.OemPlus, Key.OemMinus };
 
-        public static void ProcessingKey(Key key, bool Shift)
+        public static void ProcessingKey(Char simvol)
         { 
             
         }
