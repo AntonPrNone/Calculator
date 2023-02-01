@@ -213,7 +213,7 @@
             <Button x:Name="Zero_Btn" Grid.Row="6" Grid.Column="5" Click="Button_Click" Grid.ColumnSpan="2" Background="{StaticResource ColorNUMBERS}" FontSize="16">0</Button>
             <Button Grid.Row="6" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">,</Button>
             <Button Grid.Row="6" Grid.Column="8" Click="Button_Click" FontSize="16">+</Button>
-            <Label x:Name="Expression_Label" Content="5 + 5 * (0 + 2) * 10" Grid.ColumnSpan="10" Width="400" Height="33" Padding="5,5,10,5" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontFamily="Consolas"/>
+            <Label x:Name="Expression_Label" Content="5+5*(0+2)*10" Grid.ColumnSpan="10" Width="400" Height="33" Padding="5,5,10,5" VerticalAlignment="Top" HorizontalAlignment="Right" HorizontalContentAlignment="Right" FontFamily="Consolas" FontStretch="UltraExpanded"/>
         </Grid>
         <Grid Height="20" VerticalAlignment="Top" Background="White">
             <Grid.ColumnDefinitions>

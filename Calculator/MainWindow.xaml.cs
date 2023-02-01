@@ -31,7 +31,7 @@ namespace Calculator
         {
             var btn = e.Source as Button;
             var text = btn.Content;
-            Expression_TextBox.Text = (string)text;
+            logic.ProcessingKey((string)text);
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
@@ -40,84 +40,63 @@ namespace Calculator
             if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "ru")
             {
                 if (e.Key == Key.OemQuestion)
-                {
-                    Expression_TextBox.Text = ",";
-                }
+                    logic.ProcessingKey(',');
 
                 if ((e.Key == Key.Oem5) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                {
-                    Expression_TextBox.Text = "/";
-                }
-
-                if ((e.Key == Key.D6) &&
-                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                {
-                    Expression_TextBox.Text = "^";
-                }
+                    logic.ProcessingKey('/');
             }
 
             else if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "en")
             {
                 if (e.Key == Key.OemComma)
-                {
-                    Expression_TextBox.Text = ",";
-                }
+                    logic.ProcessingKey(',');
 
                 if (e.Key == Key.OemPeriod)
-                {
-                    Expression_TextBox.Text = ",";
-                }
+                    logic.ProcessingKey(',');
 
                 if (e.Key == Key.OemQuestion)
-                    Expression_TextBox.Text = "/";
+                    logic.ProcessingKey('/');
+
+                if ((e.Key == Key.D6) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+                    logic.ProcessingKey('^');
             }
             
             if ((e.Key == Key.D1) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = "!";
-            }
+                logic.ProcessingKey('!');
 
             if ((e.Key == Key.D8) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = "*";
-            }
+                logic.ProcessingKey('*');
 
             if ((e.Key == Key.D9) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = "(";
-            }
+                logic.ProcessingKey('(');
 
             if ((e.Key == Key.D0) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = ")";
-            }
+                logic.ProcessingKey(')');
 
             if ((e.Key == Key.OemMinus) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = "-";
-            }
+                logic.ProcessingKey('-');
 
             if ((e.Key == Key.OemPlus) && 
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-            {
-                Expression_TextBox.Text = "+";
-            }
+                logic.ProcessingKey('+');
 
-            if (e.Key == Key.Enter)
-            {
-                Expression_TextBox.Text = "=";
-            }
+            if (e.Key == Key.Enter || e.Key == Key.OemPlus)
+                logic.ProcessingKey('=');
 
             if (e.Key == Key.Back)
-            {
-                Expression_TextBox.Text = "Backspace";
-            }
+                logic.ProcessingKey('B');
+
+            if (int.TryParse(e.Key.ToString()[1].ToString(), out int figure))
+                logic.ProcessingKey(Int32.Parse(e.Key.ToString()[1].ToString()));
+
+            Expression_Label.Content = logic.Expression.ToString();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -126,19 +105,20 @@ namespace Calculator
             switch (radio.Content)
             {
                 case "Degrees":
-                    logic.cornerType = Logic.Corner.Degrees; 
+                    logic.СornerType = Logic.Corner.Degrees; 
                     break;
 
                 case "Radians":
-                    logic.cornerType = Logic.Corner.Radians;
+                    logic.СornerType = Logic.Corner.Radians;
                     break;
 
                 case "Grads":
-                    logic.cornerType = Logic.Corner.Grads;
+                    logic.СornerType = Logic.Corner.Grads;
                     break;
             }
+
             if (IsInitialized)
-            Expression_Label.Content = logic.cornerType;
+            Expression_Label.Content = logic.СornerType;
 
         }
     }

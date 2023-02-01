@@ -10,14 +10,32 @@ namespace Logic_Calc
     public class Logic
     {
         public enum Corner { Degrees, Radians, Grads };
-        public Corner cornerType = Corner.Degrees;
-        public string Expression = "";
-        public static Key[] KeysNumbers = { Key.D0, Key.D1, Key.D2, Key.D3, Key.D4, Key.D5, Key.D6, Key.D7, Key.D8, Key.D9 };
-        public static Key[] KeysSigns = { Key.Enter, Key.OemPlus, Key.OemMinus };
+        public Corner СornerType = Corner.Degrees;
+        public StringBuilder Expression = new StringBuilder("");
+        public char[] OperatorPriorities;
+        public char[] Operators = { '+', '-', '*', '/', '^', '!', '%' };
+        public void ProcessingKey(int figure)
+        {
+            Expression.Append(figure);
+        }
+        public void ProcessingKey(char simvol)
+        {
+            if (simvol == 'B')
+                Expression.Remove(Expression.Length - 1, 1);
+            else Expression.Append(simvol);
+        }
 
-        public static void ProcessingKey(Char simvol)
-        { 
-            
+        public void ProcessingKey(string text)
+        {
+            Expression.Append(text);
+        }
+
+        public void CalculatingExpression()
+        {
+            foreach (var item in Expression.ToString())
+            { 
+                
+            }
         }
 
         public static double ConvertingAngle(double angle, Corner cornerType)
