@@ -129,7 +129,7 @@
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <TextBox x:Name="Expression_TextBox" Style="{DynamicResource TextBoxStyle}" TextWrapping="Wrap" Text="10" TextAlignment="Right" Grid.ColumnSpan="10" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="25" FontFamily="Consolas" Margin="2,2,2,2" Padding="1,1,5,1" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow" BorderThickness="1,1,1,1" ClipToBounds="True" AllowDrop="True" Focusable="False">
+            <TextBox x:Name="Expression_TextBox" Style="{DynamicResource TextBoxStyle}" TextWrapping="Wrap" Text="0" TextAlignment="Right" Grid.ColumnSpan="10" VerticalContentAlignment="Bottom" HorizontalContentAlignment="Right" FontSize="25" FontFamily="Consolas" Margin="2,2,2,2" Padding="1,1,5,1" IsReadOnly="True" IsUndoEnabled="False" Cursor="Arrow" BorderThickness="1,1,1,1" ClipToBounds="True" AllowDrop="True" Focusable="False">
                 <TextBox.Background>
                     <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
                         <GradientStop Color="White" Offset="1"/>

@@ -32,71 +32,76 @@ namespace Calculator
             var btn = e.Source as Button;
             var text = btn.Content;
             logic.ProcessingKey((string)text);
+
+            Expression_Label.Content = logic.Expression.ToString();
+            Expression_TextBox.Text = logic.LastNumber.ToString();
         }
 
         private void Window_KeyDown(object sender, KeyEventArgs e)
         {
-            Expression_TextBox.Text = e.Key.ToString();
+            //Expression_TextBox.Text = e.Key.ToString();
             if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "ru")
             {
                 if (e.Key == Key.OemQuestion)
-                    logic.ProcessingKey(',');
+                    logic.ProcessingKey(",");
 
                 if ((e.Key == Key.Oem5) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                    logic.ProcessingKey('/');
+                    logic.ProcessingKey("/");
             }
 
             else if (InputLanguageManager.Current.CurrentInputLanguage.TwoLetterISOLanguageName == "en")
             {
                 if (e.Key == Key.OemComma)
-                    logic.ProcessingKey(',');
+                    logic.ProcessingKey(",");
 
                 if (e.Key == Key.OemPeriod)
-                    logic.ProcessingKey(',');
+                    logic.ProcessingKey(",");
 
                 if (e.Key == Key.OemQuestion)
-                    logic.ProcessingKey('/');
+                    logic.ProcessingKey("/");
 
                 if ((e.Key == Key.D6) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                    logic.ProcessingKey('^');
+                    logic.ProcessingKey("^");
             }
             
             if ((e.Key == Key.D1) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey('!');
+                logic.ProcessingKey("!");
 
             if ((e.Key == Key.D8) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey('*');
+                logic.ProcessingKey("*");
 
             if ((e.Key == Key.D9) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey('(');
+                logic.ProcessingKey("(");
 
             if ((e.Key == Key.D0) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey(')');
+                logic.ProcessingKey(")");
 
             if ((e.Key == Key.OemMinus) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey('-');
+                logic.ProcessingKey("-");
 
             if ((e.Key == Key.OemPlus) && 
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
-                logic.ProcessingKey('+');
+                logic.ProcessingKey("+");
 
-            if (e.Key == Key.Enter || e.Key == Key.OemPlus)
-                logic.ProcessingKey('=');
+            else if (e.Key == Key.Enter || e.Key == Key.OemPlus)
+                logic.ProcessingKey("=");
 
             if (e.Key == Key.Back)
-                logic.ProcessingKey('B');
+                logic.ProcessingKey("B");
 
-            if (int.TryParse(e.Key.ToString()[1].ToString(), out int figure))
+            if (e.Key.ToString().Length == 2 && e.Key.ToString()[0] == 'D' 
+                && int.TryParse(e.Key.ToString()[1].ToString(), out int figure))
                 logic.ProcessingKey(Int32.Parse(e.Key.ToString()[1].ToString()));
 
             Expression_Label.Content = logic.Expression.ToString();
+            Expression_TextBox.Text = logic.LastNumber.ToString();
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)
@@ -116,10 +121,6 @@ namespace Calculator
                     logic.СornerType = Logic.Corner.Grads;
                     break;
             }
-
-            if (IsInitialized)
-            Expression_Label.Content = logic.СornerType;
-
         }
     }
 }

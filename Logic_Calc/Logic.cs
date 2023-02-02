@@ -11,23 +11,85 @@ namespace Logic_Calc
     {
         public enum Corner { Degrees, Radians, Grads };
         public Corner СornerType = Corner.Degrees;
+        public bool ReplaceNextTimeClick;
         public StringBuilder Expression = new StringBuilder("");
+        public StringBuilder LastNumber = new StringBuilder("");
         public char[] OperatorPriorities;
         public char[] Operators = { '+', '-', '*', '/', '^', '!', '%' };
         public void ProcessingKey(int figure)
         {
-            Expression.Append(figure);
-        }
-        public void ProcessingKey(char simvol)
-        {
-            if (simvol == 'B')
-                Expression.Remove(Expression.Length - 1, 1);
-            else Expression.Append(simvol);
+            if (ReplaceNextTimeClick)
+            {
+                LastNumber.Clear();
+                ReplaceNextTimeClick = false;
+            } 
+            
+            LastNumber.Append(figure);
         }
 
         public void ProcessingKey(string text)
         {
-            Expression.Append(text);
+            if (ReplaceNextTimeClick)
+            {
+                LastNumber.Clear();
+                ReplaceNextTimeClick = false;
+            }
+
+            switch (text)
+            {
+                case "B":
+                    if (Expression.Length !=0)
+                        Expression.Remove(Expression.Length - 1, 1);
+                    break;
+
+                case "⟵":
+                    if (Expression.Length != 0)
+                        Expression.Remove(Expression.Length - 1, 1);
+                    break;
+
+                case "C":
+                    LastNumber = new StringBuilder("0");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "CE":
+                    Expression.Clear();
+                    LastNumber = new StringBuilder("0");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "±":
+                    LastNumber = new StringBuilder(Int32.Parse(LastNumber.ToString()) * -1);
+                    break;
+
+                case "+":
+                    Expression.Append(LastNumber);
+                    Expression.Append("+");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "-":
+                    Expression.Append(LastNumber);
+                    Expression.Append("-");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "*":
+                    Expression.Append(LastNumber);
+                    Expression.Append("*");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "/":
+                    Expression.Append(LastNumber);
+                    Expression.Append("/");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                default:
+                    Expression.Append(text);
+                    break;
+            }
         }
 
         public void CalculatingExpression()
