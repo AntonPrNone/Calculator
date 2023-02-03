@@ -11,12 +11,13 @@ namespace Logic_Calc
     {
         public enum Corner { Degrees, Radians, Grads };
         public Corner СornerType = Corner.Degrees;
+        public double Angle;
         public bool ReplaceNextTimeClick;
         public StringBuilder Expression = new StringBuilder("");
         public StringBuilder LastNumber = new StringBuilder("");
         public char[] OperatorPriorities;
         public char[] Operators = { '+', '-', '*', '/', '^', '!', '%' };
-        public void ProcessingKey(int figure)
+        public void ProcessingKey(double figure)
         {
             if (ReplaceNextTimeClick)
             {
@@ -27,6 +28,10 @@ namespace Logic_Calc
             LastNumber.Append(figure);
         }
 
+        public void ProcessingKey(char chr)
+        {
+            if (chr == ',') LastNumber.Append(chr);
+        }
         public void ProcessingKey(string text)
         {
             if (ReplaceNextTimeClick)
@@ -84,6 +89,44 @@ namespace Logic_Calc
                     Expression.Append(LastNumber);
                     Expression.Append("/");
                     ReplaceNextTimeClick = true;
+                    break;
+
+                // ---------------------------------
+
+                case "sin":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"sin({Angle})");
+                    LastNumber = new StringBuilder(Math.Sin(Angle).ToString());
+                    break;
+
+                case "cos":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"cos({Angle})");
+                    LastNumber = new StringBuilder(Math.Cos(Angle).ToString());
+                    break;
+
+                case "tan":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"tan({Angle})");
+                    LastNumber = new StringBuilder(Math.Tan(Angle).ToString());
+                    break;
+
+                case "sinh":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"sin({Angle})");
+                    LastNumber = new StringBuilder(Math.Sinh(Angle).ToString());
+                    break;
+
+                case "cosh":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"sin({Angle})");
+                    LastNumber = new StringBuilder(Math.Cosh(Angle).ToString());
+                    break;
+
+                case "tanh":
+                    Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
+                    Expression.Append($"sin({Angle})");
+                    LastNumber = new StringBuilder(Math.Tanh(Angle).ToString());
                     break;
 
                 default:

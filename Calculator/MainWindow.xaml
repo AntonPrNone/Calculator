@@ -232,7 +232,7 @@
                         <MenuItem Header="Paste"/>
                     </MenuItem>
                     <MenuItem Header="Help" >
-                        <MenuItem Header="Help Topics"/>
+                        <MenuItem Header="Help Topics" Click="MenuItem_Click" />
                         <Separator/>
                         <MenuItem Header="About Calculator"/>
                     </MenuItem>

@@ -1,6 +1,7 @@
 ﻿using Logic_Calc;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,7 +32,11 @@ namespace Calculator
         {
             var btn = e.Source as Button;
             var text = btn.Content;
-            logic.ProcessingKey((string)text);
+            if (double.TryParse((string)text, out double figure))
+                logic.ProcessingKey(double.Parse((string)text));
+            else if ((string)text == ",")
+                logic.ProcessingKey(Char.Parse((string)text));
+            else logic.ProcessingKey((string)text);
 
             Expression_Label.Content = logic.Expression.ToString();
             Expression_TextBox.Text = logic.LastNumber.ToString();
@@ -96,8 +101,8 @@ namespace Calculator
             if (e.Key == Key.Back)
                 logic.ProcessingKey("B");
 
-            if (e.Key.ToString().Length == 2 && e.Key.ToString()[0] == 'D' 
-                && int.TryParse(e.Key.ToString()[1].ToString(), out int figure))
+            if ((e.Key.ToString().Length == 2 && e.Key.ToString()[0] == 'D' 
+                && int.TryParse(e.Key.ToString()[1].ToString(), out int figure)) )
                 logic.ProcessingKey(Int32.Parse(e.Key.ToString()[1].ToString()));
 
             Expression_Label.Content = logic.Expression.ToString();
@@ -121,6 +126,11 @@ namespace Calculator
                     logic.СornerType = Logic.Corner.Grads;
                     break;
             }
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://youtu.be/o-YBDTqX_ZU");
         }
     }
 }
