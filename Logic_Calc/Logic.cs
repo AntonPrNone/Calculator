@@ -17,22 +17,27 @@ namespace Logic_Calc
         public StringBuilder LastNumber = new StringBuilder("");
         public char[] OperatorPriorities;
         public char[] Operators = { '+', '-', '*', '/', '^', '!', '%' };
-        public void ProcessingKey(double figure)
+        public void ProcessingKey(double figure) // Перегрузка числа
         {
             if (ReplaceNextTimeClick)
             {
                 LastNumber.Clear();
                 ReplaceNextTimeClick = false;
-            } 
-            
+            }
+
+            Expression.Append(figure);
             LastNumber.Append(figure);
         }
 
-        public void ProcessingKey(char chr)
+        public void ProcessingKey(char chr) // Перегрузка разделителя дробной части числа
         {
-            if (chr == ',') LastNumber.Append(chr);
+            if (chr == ',')
+            {
+                Expression.Append(chr);
+                LastNumber.Append(chr);
+            } 
         }
-        public void ProcessingKey(string text)
+        public void ProcessingKey(string text) // Перегрузка операторов
         {
             if (ReplaceNextTimeClick)
             {
@@ -42,29 +47,28 @@ namespace Logic_Calc
 
             switch (text)
             {
-                case "B":
-                    if (Expression.Length !=0)
-                        Expression.Remove(Expression.Length - 1, 1);
-                    break;
-
                 case "⟵":
-                    if (Expression.Length != 0)
+                    if (LastNumber.Length != 0)
+                    {
+                        LastNumber.Remove(LastNumber.Length - 1, 1);
                         Expression.Remove(Expression.Length - 1, 1);
+                    }
                     break;
 
                 case "C":
-                    LastNumber = new StringBuilder("0");
-                    ReplaceNextTimeClick = true;
+                    LastNumber.Remove(LastNumber.Length - 1, 1);
+                    Expression.Remove(Expression.Length - 1, 1);
                     break;
 
                 case "CE":
                     Expression.Clear();
-                    LastNumber = new StringBuilder("0");
+                    LastNumber.Clear();
                     ReplaceNextTimeClick = true;
                     break;
 
                 case "±":
                     LastNumber = new StringBuilder(Int32.Parse(LastNumber.ToString()) * -1);
+                    Expression.Insert(Expression.Length - LastNumber.Length, "-");
                     break;
 
                 case "+":

@@ -75,6 +75,10 @@ namespace Calculator
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
                 logic.ProcessingKey("!");
 
+            if ((e.Key == Key.D5) &&
+                (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
+                logic.ProcessingKey("Mod");
+
             if ((e.Key == Key.D8) &&
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
                 logic.ProcessingKey("*");
@@ -99,7 +103,10 @@ namespace Calculator
                 logic.ProcessingKey("=");
 
             if (e.Key == Key.Back)
-                logic.ProcessingKey("B");
+                logic.ProcessingKey("⟵");
+
+            if (e.Key == Key.Escape)
+                logic.ProcessingKey("CE");
 
             if ((e.Key.ToString().Length == 2 && e.Key.ToString()[0] == 'D' 
                 && int.TryParse(e.Key.ToString()[1].ToString(), out int figure)) )

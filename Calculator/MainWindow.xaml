@@ -172,7 +172,7 @@
             <Button Grid.Row="2" Grid.Column="8" Click="Button_Click">±</Button>
             <Button Grid.Row="2" Grid.Column="9" Click="Button_Click">√</Button>
 
-            <Button Grid.Row="3" Grid.Column="0" Click="Button_Click">Int</Button>
+            <Button Grid.Row="3" Grid.Column="0" Click="Button_Click" IsEnabled="False">Int</Button>
             <Button Grid.Row="3" Grid.Column="1" Click="Button_Click">sinh</Button>
             <Button Grid.Row="3" Grid.Column="2" Click="Button_Click">sin</Button>
             <Button Grid.Row="3" Grid.Column="3" Click="Button_Click">x^2</Button>
@@ -181,9 +181,9 @@
             <Button Grid.Row="3" Grid.Column="6" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">8</Button>
             <Button Grid.Row="3" Grid.Column="7" Click="Button_Click" Background="{DynamicResource ColorNUMBERS}" FontSize="16">9</Button>
             <Button Grid.Row="3" Grid.Column="8" Click="Button_Click">/</Button>
-            <Button Grid.Row="3" Grid.Column="9" Click="Button_Click">%</Button>
+            <Button Grid.Row="3" Grid.Column="9" Click="Button_Click" IsEnabled="False">%</Button>
 
-            <Button Grid.Row="4" Grid.Column="0" Click="Button_Click">dms</Button>
+            <Button Grid.Row="4" Grid.Column="0" Click="Button_Click" IsEnabled="False">dms</Button>
             <Button Grid.Row="4" Grid.Column="1" Click="Button_Click">cosh</Button>
             <Button Grid.Row="4" Grid.Column="2" Click="Button_Click">cos</Button>
             <Button Grid.Row="4" Grid.Column="3" Click="Button_Click">x^y</Button>
@@ -205,7 +205,7 @@
             <Button Grid.Row="5" Grid.Column="8" Click="Button_Click" FontSize="16">-</Button>
             <Button Grid.Row="5" Grid.Column="9" Click="Button_Click" Grid.RowSpan="2" FontSize="22" FontWeight="Bold" Cursor="Hand">=</Button>
 
-            <Button Grid.Row="6" Grid.Column="0" Click="Button_Click">F-E</Button>
+            <Button Grid.Row="6" Grid.Column="0" Click="Button_Click" IsEnabled="False">F-E</Button>
             <Button Grid.Row="6" Grid.Column="1" Click="Button_Click">Exp</Button>
             <Button Grid.Row="6" Grid.Column="2" Click="Button_Click">Mod</Button>
             <Button Grid.Row="6" Grid.Column="3" Click="Button_Click">log</Button>
