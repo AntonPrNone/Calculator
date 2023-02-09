@@ -47,7 +47,17 @@ namespace Logic_Calc
 
 			switch (text)
 			{
-				case "⟵":
+                case "(":
+                    Expression.Append("(");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case ")":
+                    Expression.Append(")");
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                case "⟵":
 					if (LastNumber.Length != 0)
 					{
 						LastNumber.Remove(LastNumber.Length - 1, 1);
@@ -67,11 +77,12 @@ namespace Logic_Calc
 					break;
 
 				case "±":
-					LastNumber = new StringBuilder(Int32.Parse(LastNumber.ToString()) * -1);
-					Expression.Insert(Expression.Length - LastNumber.Length, "-");
-					break;
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder((Double.Parse(LastNumber.ToString()) * -1).ToString());
+                    Expression.Append(LastNumber);
+                    break;
 
-				case "+":
+                case "+":
 					Expression.Append("+");
 					ReplaceNextTimeClick = true;
 					break;
@@ -91,9 +102,20 @@ namespace Logic_Calc
 					ReplaceNextTimeClick = true;
 					break;
 
-				// ---------------------------------
+                case "Mod":
+                    Expression.Append("%");
+                    ReplaceNextTimeClick = true;
+                    break;
 
-				case "sin":
+                case "π":
+                    Expression.Append(Math.PI);
+					LastNumber = new StringBuilder(Math.PI.ToString());
+                    ReplaceNextTimeClick = true;
+                    break;
+
+                // ---------------------------------
+
+                case "sin":
 					Angle = ConvertingAngle(Double.Parse(LastNumber.ToString()), СornerType);
 					Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
 					Expression.Append(Math.Sin(Angle));
@@ -137,19 +159,80 @@ namespace Logic_Calc
 
 				// ---------------------------------
 
-				case "!":
+				case "n!":
 					double LNumber = Double.Parse(LastNumber.ToString());
-					if (LNumber % 1 == 0) Factorial((int)LNumber);
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+					if (LNumber % 1 == 0)
+					{
+						LastNumber = new StringBuilder(Factorial((int)LNumber).ToString());
+					}
+					
 					else
 					{ 
-						LastNumber = new StringBuilder(Math.Log(Factorial((int)(LNumber))) + (LNumber - (int)(LNumber)) * Math.Log((int)LNumber + 1));
-					} 
-						break;
+						LastNumber = new StringBuilder((int)(Math.Log(Factorial((int)(LNumber))) + (LNumber - (int)(LNumber)) * Math.Log((int)LNumber + 1)));
+					}
+					Expression.Append(LastNumber);
 
-				//default:
-				//    Expression.Append(text);
-				//    break;
-			}
+                    break;
+
+                case "√":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Pow(Double.Parse(LastNumber.ToString()), 1.0 / 2.0).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                case "1/x":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder((1 / Double.Parse(LastNumber.ToString())).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                case "x^2":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+					LastNumber = new StringBuilder(Math.Pow(Double.Parse(LastNumber.ToString()), 2).ToString());
+                    Expression.Append(LastNumber);
+					break;
+
+                case "x^3":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Pow(Double.Parse(LastNumber.ToString()), 3).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                case "10^x":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Pow(10, Double.Parse(LastNumber.ToString())).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+				case "3√x":
+					Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+					LastNumber = new StringBuilder(Math.Pow(Double.Parse(LastNumber.ToString()), 1.0 / 3.0).ToString());
+					Expression.Append(LastNumber);
+					break;
+
+                case "log":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Log(Double.Parse(LastNumber.ToString())).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                case "In":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Log10(Double.Parse(LastNumber.ToString())).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                case "Exp":
+                    Expression.Remove(Expression.Length - LastNumber.Length, LastNumber.Length);
+                    LastNumber = new StringBuilder(Math.Exp(Double.Parse(LastNumber.ToString())).ToString());
+                    Expression.Append(LastNumber);
+                    break;
+
+                    //default:
+                    //    Expression.Append(text);
+                    //    break;
+            }
 		}
 
 		public void CalculatingExpression()

@@ -99,14 +99,11 @@ namespace Calculator
                 (e.KeyboardDevice.Modifiers & ModifierKeys.Shift) == ModifierKeys.Shift)
                 logic.ProcessingKey("+");
 
-            else if (e.Key == Key.Enter || e.Key == Key.OemPlus)
+            else if (e.Key == Key.OemPlus)
                 logic.ProcessingKey("=");
 
             if (e.Key == Key.Back)
                 logic.ProcessingKey("⟵");
-
-            if (e.Key == Key.Escape)
-                logic.ProcessingKey("CE");
 
             if ((e.Key.ToString().Length == 2 && e.Key.ToString()[0] == 'D' 
                 && int.TryParse(e.Key.ToString()[1].ToString(), out int figure)) )
@@ -138,6 +135,23 @@ namespace Calculator
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
             Process.Start("https://youtu.be/o-YBDTqX_ZU");
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+            Clipboard.SetText((string)Expression_Label.Content);
+        }
+
+        private void MenuItem_Click_2(object sender, RoutedEventArgs e)
+        {
+            Expression_Label.Content += Clipboard.GetText();
+            logic.Expression.Append(Clipboard.GetText());
+        }
+
+        private void MenuItem_Click_3(object sender, RoutedEventArgs e)
+        {
+            AboutCalculator aboutCalculator = new AboutCalculator();
+            aboutCalculator.Show();
         }
     }
 }
