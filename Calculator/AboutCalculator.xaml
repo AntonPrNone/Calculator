@@ -7,16 +7,18 @@
         mc:Ignorable="d"
         Title="AboutCalculator" Height="210" Width="300" WindowStartupLocation="CenterScreen" Topmost="True" WindowStyle="None" AllowsTransparency="True" Background="Transparent">
     <Grid>
-        <Border Width="auto" Height="auto" BorderBrush="LimeGreen" BorderThickness="2"
-                CornerRadius="1,30,1,30">
+        <Border x:Name="BorderColor1" Width="auto" Height="auto" BorderThickness="2"
+                CornerRadius="1,30,1,30" Panel.ZIndex="0">
+            <Border.BorderBrush>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Blue"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.BorderBrush>
             <Border.Background>
                 <LinearGradientBrush>
-                    <GradientBrush.GradientStops>
-                        <GradientStopCollection>
-                            <GradientStop Color="#e7ebf7" Offset="0.0"></GradientStop>
-                            <GradientStop Color="#FFCEE3FF" Offset="0.5"></GradientStop>
-                        </GradientStopCollection>
-                    </GradientBrush.GradientStops>
+                    <GradientStop Color="#FFE7EBF7"/>
+                    <GradientStop Color="#FFCEE3FF" Offset="0.5"/>
                 </LinearGradientBrush>
             </Border.Background>
             <Grid>
@@ -25,12 +27,28 @@
                     <RowDefinition></RowDefinition>
                     <RowDefinition Height="auto"></RowDefinition>
                 </Grid.RowDefinitions>
-                <TextBlock Text="Title my Window" Padding="5"></TextBlock>
-                <Grid Grid.Row="1" Background="#B5CBEF">
-                    <TextBlock VerticalAlignment="Center" FontSize="18" 
-                               Foreground="White" HorizontalAlignment="Center">My Content</TextBlock>
+                <TextBlock Text="About Calculator" Padding="5" Panel.ZIndex="0" FontFamily="Comic Sans MS"/>
+                <Grid x:Name="BorderColor2" Grid.Row="1" Background="#B5CBEF" Panel.ZIndex="-1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <Label HorizontalAlignment="Left" Margin="121,115,0,0" VerticalAlignment="Top"/>
+                    <TextBlock x:Name="AuthorsText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Authors" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20" Margin="0,10,0,0" Opacity="0"/>
+                    <TextBlock x:Name="Heading1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Designer:" VerticalAlignment="Center" FontFamily="Cascadia Code" FontWeight="Bold" Margin="0,0,50,20" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Text1" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Akhtymov Anton" VerticalAlignment="Center" FontFamily="Cascadia Code" Margin="50,20,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Heading2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Programmer:" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" Margin="81,60,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Text2" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Akhtymov Anton" VerticalAlignment="Top" FontFamily="Cascadia Code" Margin="107,80,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Heading3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Main Developer:" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" Margin="81,60,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Text3" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Akhtymov Anton" VerticalAlignment="Top" FontFamily="Cascadia Code" Margin="107,80,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Heading4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Developer:" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" Margin="81,60,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Text4" HorizontalAlignment="Left" TextWrapping="Wrap" Text="Akhtymov Anton" VerticalAlignment="Top" FontFamily="Cascadia Code" Margin="107,80,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Heading5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="ГАПОУ &quot;МЦК-КТИТС&quot;" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" Margin="81,60,0,0" FontSize="16" Opacity="0"/>
+                    <TextBlock x:Name="Text5" HorizontalAlignment="Left" TextWrapping="Wrap" Text="321-20П &amp;&amp; 320-19П" VerticalAlignment="Top" FontFamily="Cascadia Code" Margin="107,80,0,0" FontSize="16" Opacity="0" FontWeight="Bold"/>
+                    <TextBlock x:Name="StudentText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="College and Group Student:" VerticalAlignment="Top" FontFamily="Cascadia Code" FontWeight="Bold" FontSize="20" Margin="0,10,0,0" TextAlignment="Center" Opacity="0"/>
+                    <Image x:Name="Logo" HorizontalAlignment="Left" Height="50" Margin="10,45,0,0" VerticalAlignment="Top" Width="50" Source="/LogoKtits.png" Opacity="0"/>
                 </Grid>
-                <TextBlock Text="Footer" Padding="5" Grid.Row="2" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Padding="5" Grid.Row="2" HorizontalAlignment="Center" Text="©Copyrigh. All rights reserved" Foreground="#FF444444" FontSize="8"/>
+                <Image x:Name="CloseButton" HorizontalAlignment="Left" Height="15" Margin="261,0,0,0" VerticalAlignment="Center" Width="15" Source="/Close.png" RenderTransformOrigin="1.233,0.735" MouseLeftButtonUp="CloseButton_MouseLeftButtonUp" Cursor="Hand" OpacityMask="Black"/>
             </Grid>
         </Border>
     </Grid>

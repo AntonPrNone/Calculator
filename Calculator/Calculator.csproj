@@ -112,7 +112,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="WinBorder.png" />
+    <Resource Include="Image1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="LogoKtits.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

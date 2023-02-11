@@ -235,15 +235,32 @@ namespace Logic_Calc
             }
 		}
 
-		public void CalculatingExpression()
-		{
-			foreach (var item in Expression.ToString())
-			{ 
-				
-			}
-		}
+        public void CalculatingExpression(string exp)
+        {
+            List<string> list = new List<string>();
+            for (int i = 0; i < exp.Length; i++) list.Add(exp[i].ToString());
 
-		public static double ConvertingAngle(double angle, Corner cornerType)
+            int upBracket = (from p in list where p == ("(") select p).Count();
+            int downBracket = (from p in list where p == (")") select p).Count();
+
+            for (int i = 0; i < upBracket; i++)
+            {
+                int indexBracket = list.LastIndexOf("(");
+                list.RemoveAt(indexBracket);
+                list.Insert(indexBracket, $"su{i}");
+            }
+
+            for (int i = 0; i < downBracket; i++)
+            {
+                int indexBracket = list.IndexOf(")");
+                list.RemoveAt(indexBracket);
+                list.Insert(indexBracket, $"sd{i}");
+            }
+
+            Console.WriteLine(String.Join("", list));
+        }
+
+        public static double ConvertingAngle(double angle, Corner cornerType)
 		{
 			switch (cornerType)
 			{
